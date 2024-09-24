@@ -80,6 +80,7 @@ async def on_ready():
     print(f'Бот {bot.user.name} запущен и готов к работе')
     await bot.change_presence(activity=discord.Game(name=f'Бот запущен'))
     check_premium.start()  # Запуск задачи проверки истечения премиума
+    print(DISCORD_TOKEN)
 
 @bot.command(name="generate_key")
 @commands.has_any_role(1285692238395084873, 1282539277758234727)
