@@ -13,8 +13,9 @@ load_dotenv()
 DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
 
 
+intents= discord.Intents.All()
 # Настройка бота
-bot = commands.Bot(command_prefix='!')
+bot = commands.Bot(command_prefix='!', intents=intents)
 
 # Подключение к базе данных SQLite
 def connect_db():
