@@ -86,7 +86,6 @@ async def on_ready():
     print(DISCORD_TOKEN)
 
 @bot.command(name="generate_key")
-@commands.has_any_role(1285692238395084873, 1282539277758234727)
 async def generate_key(ctx, days_valid: int, uses: int):
     """Генерация ключа с указанием количества дней действия и количества использований."""
     conn = connect_db()
