@@ -57,26 +57,6 @@ def is_premium_active(premium_end_date):
     except ValueError:
         return False
 
-@tasks.loop(hours=24)
-async def check_premium():
-    """Периодическая проверка истечения срока премиума."""
-    conn = connect_db()
-    cursor = conn.cursor()
-    
-    cursor.execute("SELECT id, discord_id, premium_end_date FROM accounts")
-    accounts = cursor.fetchall()
-    current_date = datetime.datetime.now()
-
-    for account in accounts:
-        account_id, discord_id, premium_end_date = account
-        if is_premium_active(premium_end_date):
-            print(f"Премиум активен для {discord_id}.")
-        else:
-            cursor.execute("UPDATE accounts SET premium_end_date = 'None' WHERE id = ?", (account_id,))
-            print(f"Премиум истек для {discord_id}, дата премиума теперь None.")
-    
-    conn.commit()
-    conn.close()
 
 @bot.event
 async def on_ready():
