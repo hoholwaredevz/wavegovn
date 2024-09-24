@@ -13,7 +13,7 @@ load_dotenv()
 DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
 
 
-intents= discord.Intents.All()
+intents= discord.Intents.all()
 # Настройка бота
 bot = commands.Bot(command_prefix='!', intents=intents)
 
